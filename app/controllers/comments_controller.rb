@@ -21,6 +21,18 @@ before_action :authenticate_user!, only: [:create, :destroy]
   	redirect_to root_path
   end
 
+def edit
+@com=Comment.find(params[:id])
+
+
+end
+def update
+@com=Comment.find(params[:id])
+@com.update(content: params[:comment][:content])
+
+redirect_to :controller => 'posts', :action => 'home' 
+end
+
   private
 
   def set_comment

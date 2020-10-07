@@ -24,7 +24,18 @@ before_action :authenticate_user!, only: [:create, :destroy]
 
   	#redirect_to action: "home"
   end
+def edit
+    @postfind = Post.find(params[:id])
+  end
 
+  # receive data and update in database of a specific post
+  def update
+    @post = Post.find(params[:id])
+
+    @post.update(content: params[:post][:content])
+      redirect_to action: "home"
+
+      end
 
   private
 
